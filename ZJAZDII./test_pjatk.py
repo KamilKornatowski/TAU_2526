@@ -47,6 +47,33 @@ try:
 )
     driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", kontakt_link)
 
+
+    
+    time.sleep(1) 
+
+    body_text = driver.find_element(By.TAG_NAME, "body").text
+
+    logger.info('Test adresu')
+    if expected_address in body_text:
+        logger.info('Adres poprawny')
+    else:
+        logger.info('Adres niepoprawny')
+ 
+finally:
+    pass
+
+driver = webdriver.Firefox()
+wait = WebDriverWait(driver, 15)
+
+
+
+try:
+    logger.info('Start testu - Firefox')
+    logger.info('Otwieram stronę PJATK')
+    driver.get("https://pja.edu.pl")
+
+    logger.warning('Próba akceptacji cookies')
+    
     try:
         cookie_buttons = driver.find_elements(By.TAG_NAME, "button")
         for btn in cookie_buttons:
@@ -58,10 +85,17 @@ try:
            logger.warning('Brak przycisku')
     except Exception as e:
         logger.error('Nie udało się zaakceptować cookies')
+
+
+    
+    kontakt_link = wait.until(
+    EC.presence_of_element_located((By.LINK_TEXT, "Kontakt"))
+)
+    driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", kontakt_link)
     
     time.sleep(1) 
 
-    body_text = driver.find_element(By.TAG_NAME, "body").text
+    #body_text = driver.find_element(By.TAG_NAME, "body").text
 
     logger.info('Test adresu')
     if expected_address in body_text:
