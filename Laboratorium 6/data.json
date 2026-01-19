@@ -1,0 +1,29 @@
+{
+  "transactions": [
+    { "id": 1, "amount": 150.00, "currency": "PLN", "status": "SUCCESS", "customer_id": 101 },
+    { "id": 2, "amount": 45.99, "currency": "EUR", "status": "PENDING", "customer_id": 102 }
+  ],
+  "transaction_statuses": {
+    "1": { "id": 1, "status": "SUCCESS", "updated_at": "2023-10-27T10:00:00Z" },
+    "2": { "id": 2, "status": "PENDING", "updated_at": "2023-10-27T12:30:00Z" }
+  },
+  "payment_methods": [
+    { "type": "BLIK", "enabled": true, "limit": 5000 },
+    { "type": "CARD", "enabled": true, "limit": 10000 },
+    { "type": "TRANSFER", "enabled": false, "limit": 0 }
+  ],
+  "customer_history": {
+    "101": [
+      { "id": 1, "amount": 150.00, "date": "2023-10-25" },
+      { "id": 5, "amount": 20.00, "date": "2023-10-20" }
+    ]
+  },
+  "refunds": [
+    { "refund_id": "REF-001", "original_transaction_id": 1, "reason": "Return" }
+  ],
+  "health": {
+    "status": "UP",
+    "version": "1.0.0",
+    "timestamp": "2023-10-27T15:00:00Z"
+  }
+}
